@@ -5,7 +5,7 @@ const { Joi } = frisby;
 // GET all recipes API tests
 it('should return a status of 200 when the recipes are found', () => {
 	return frisby
-	.get('http://localhost:8000/api/recipes/5')
+	.get('https://aqian-recipes-api.herokuapp.com/api/recipes/5')
 	.expect('status', 200);
 });
 
@@ -13,13 +13,13 @@ it('should return a status of 200 when the recipes are found', () => {
 // GET single recipe API tests
 it('should return a status of 200 when the recipe is found', () => {
 	return frisby
-	.get('http://localhost:8000/api/recipes/5')
+	.get('https://aqian-recipes-api.herokuapp.com/api/recipes/5')
 	.expect('status', 200);
 });
 
 it('should return a status of 404 when the recipe does not exist', () => {
 	return frisby
-	.get('http://localhost:8000/api/recipes/-1')
+	.get('https://aqian-recipes-api.herokuapp.com/api/recipes/-1')
 	.expect('status', 404);
 });
 
@@ -27,7 +27,7 @@ it('should return a status of 404 when the recipe does not exist', () => {
 // POST to create recipe API tests
 it('should create a recipe', () => {
 	return frisby
-	.post('http://localhost:8000/api/recipes', {
+	.post('https://aqian-recipes-api.herokuapp.com/api/recipes', {
 		title: 'Adding a test recipe..'
 	})
 	.expect('status', 200)
@@ -37,7 +37,7 @@ it('should create a recipe', () => {
 
 it('should return a status of 422 when the recipe fails to create', () => {
 	return frisby
-	.patch('http://localhost:8000/api/recipes/5', {
+	.patch('https://aqian-recipes-api.herokuapp.com/api/recipes/5', {
 		title: '',
 		directions: '',
 		quantity01: 'a'
@@ -53,7 +53,7 @@ it('should return a status of 422 when the recipe fails to create', () => {
 // PATCH to edit recipe API tests
 it('should return a status of 200 when the recipe is updated successfully', () => {
 	return frisby
-	.patch('http://localhost:8000/api/recipes/5', {
+	.patch('https://aqian-recipes-api.herokuapp.com/api/recipes/5', {
 		title: 'Editted recipe name to this..',
 		directions: 'Testing testing testing'
 	})
@@ -62,7 +62,7 @@ it('should return a status of 200 when the recipe is updated successfully', () =
 
 it('should return a status of 422 when the recipe fails to update', () => {
 	return frisby
-	.patch('http://localhost:8000/api/recipes/5', {
+	.patch('https://aqian-recipes-api.herokuapp.com/api/recipes/5', {
 		title: '',
 		directions: '',
 		quantity01: 'a'
@@ -77,13 +77,13 @@ it('should return a status of 422 when the recipe fails to update', () => {
 // DELETE recipe API tests
 it('should return a 204 when deleting a recipe that exists', () => {
 	return frisby
-	.del('http://localhost:8000/api/recipes/234')
+	.del('https://aqian-recipes-api.herokuapp.com/api/recipes/235')
 	.expect('status', 204);
 });
 
 it('should return a 404 when deleting a recipe that does not exist', () => {
 	return frisby
-	.del('http://localhost:8000/api/playlists/-1')
+	.del('https://aqian-recipes-api.herokuapp.com/api/recipes/-1')
 	.expect('status', 404);
 });
 

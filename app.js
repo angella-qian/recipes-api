@@ -45,7 +45,7 @@ app.get('/api/recipes/:id', function(request, response) {
 		if(recipe) {
 			response.json(recipe);
 		} else{
-			response.status(404).send();
+			response.status(404).send('Recipe with id ' + id + ' was not found');
 		}
 	});
 });
@@ -167,7 +167,7 @@ app.patch('/api/recipes/:id', function(request, response) {
 			response.status(200).send();
 		}, (validation) => {
 			// If the track isn’t found, return an empty response with a 404 status code.
-			response.status(404).json({
+			response.status(422).json({
 				errors: validation.errors.map((error) => {
 					return {
 						attribute: error.path,
@@ -194,9 +194,12 @@ app.delete('/api/recipes/:id', function(request, response) {
 		}).then( () => {
 			response.status(204).send();
 		}, () => {
-			response.status(404).send();
+			response.status(404).send('Recipe with id ' + id + ' was not found');
 		});
 });
+
+
+// --- Extra endpoints below ---
 
 
 // GET single category
@@ -207,7 +210,7 @@ app.get('/api/categories/:id', function(request, response) {
 		if(category) {
 			response.json(category);
 		} else{
-			response.status(404).send();
+			response.status(404).send('Category with id ' + id + ' was not found');
 		}
 	});
 });
@@ -220,7 +223,7 @@ app.get('/api/times/:id', function(request, response) {
 		if(time) {
 			response.json(time);
 		} else{
-			response.status(404).send();
+			response.status(404).send('Total time with id ' + id + ' was not found');
 		}
 	});
 });

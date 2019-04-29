@@ -77,7 +77,7 @@ it('should return a status of 422 when the recipe fails to update', () => {
 // DELETE recipe API tests
 it('should return a 204 when deleting a recipe that exists', () => {
 	return frisby
-	.del('https://aqian-recipes-api.herokuapp.com/api/recipes/235')
+	.del('https://aqian-recipes-api.herokuapp.com/api/recipes/236')
 	.expect('status', 204);
 });
 

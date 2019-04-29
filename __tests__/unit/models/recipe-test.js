@@ -56,4 +56,15 @@ describe('recipe', () => {
 			}
 		});
 	});
+
+	describe('quantity06', () => {
+		it('should be a decimal', async () => {
+			try {
+				let recipe = new Recipe({ quantity06: 'a' });
+				await recipe.validate();
+			} catch (error) {
+				expect(error.errors[0].message).to.equal('Quantity06 must be a decimal');
+			}
+		});
+	});
 });
